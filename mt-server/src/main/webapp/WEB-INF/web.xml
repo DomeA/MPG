@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
+  <display-name>Mappingo</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <context-param>
+    <description>Spring上下文</description>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext*.xml</param-value>
+  </context-param>
+  <!--Character Encoding filter(字符集拦截转换)-->
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter </filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <listener>
+    <listener-class>
+      org.springframework.web.context.ContextLoaderListener
+    </listener-class>
+  </listener>
+  <listener>
+    <listener-class>
+      org.springframework.web.context.request.RequestContextListener
+    </listener-class>
+  </listener>
+
+  <filter>
+    <description>hibernate Session 过滤器</description>
+    <filter-name>openSessionInViewFilter</filter-name>
+    <filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>openSessionInViewFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!--支持JAX-RS规范的RESTFUL配置 begin-->
+  <servlet>
+    <servlet-name>JerseyServlet</servlet-name>
+    <servlet-class>
+      com.sun.jersey.spi.spring.container.servlet.SpringServlet
+    </servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <!-- REST服务包路径，系统启动时自动扫描服务包路径 begin-->
+      <param-value>com.domeastudio.rest</param-value>
+      <!-- REST服务包路径，系统启动时自动扫描服务包路径 end-->
+    </init-param>
+    <!--支持response数据序列化 pojo对象序列化成json、xml begin-->
+    <init-param>
+      <param-name>
+        com.sun.jersey.api.json.POJOMappingFeature
+      </param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <!--支持response数据序列化 pojo对象序列化成json、xml end-->
+    <!--设置加载时启动的优先顺序 REST模块哦第一个被加载 begin-->
+    <load-on-startup>1</load-on-startup>
+    <!--设置加载时启动的优先顺序 end-->
+  </servlet>
+
+
+  <!--支持JAX-RS规范的RESTFUL配置 REST模块哦第一个被加载 end-->
+  <!--URL与REST服务映射 begin-->
+  <servlet-mapping>
+    <servlet-name>JerseyServlet</servlet-name>
+    <!--REST服务截获后匹配的地址，匹配后交给REST服务包处理  begin-->
+    <url-pattern>/rest/*</url-pattern>
+    <!--REST服务截获后匹配的地址，匹配后交给REST服务包处理 end-->
+  </servlet-mapping>
+  <!--URL与REST服务映射 end-->
+</web-app>

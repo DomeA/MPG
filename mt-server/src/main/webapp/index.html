@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var host = "http://localhost:10086/server";
+            $('input').click(function () {
+                var i = this.id.split("btn")[1];
+                var data = null;
+                var k;
+                if(i!="13"&&i!="14"&&i!="15"&&i!="16"&&i!="17"){
+                    k="1";
+                }else{
+                    k=i;
+                }
+                switch (k) {
+                    case "1":
+                        data = JSON.stringify({
+                            sourceWKT: "POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))",
+                            targetWKT: "POINT(5 5)"
+                        });
+                        break;
+                    case "13":
+                        data = JSON.stringify({
+                            sourceWKT: "POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))",
+                            radius: 100.0
+                        });
+                        break;
+                    case "14":
+                        data = JSON.stringify({
+                            sourceWKT: "POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))"
+                        });
+                        break;
+                    case "15":
+                        data = JSON.stringify({
+                            sourceWKT: "LINESTRING(1 1,2 2,3 3,5 7,8 9,12 45)"
+                        });
+                        break;
+                    case "16":
+                        data = JSON.stringify({
+                            sourceWKT: "LINESTRING(1 1,2 2,3 3,5 7,8 9,12 45)",
+                            sourceEpsg: 4326,
+                            targetEpsg: 900913
+                        });
+                        break;
+                    case "17":
+                        data = JSON.stringify({
+                            sourceWKT: "LINESTRING(1 1,2 2,3 3,5 7,8 9,12 45)",
+                            sourceCRS:'GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4326"]]',
+                            targetCRS:'PROJCS["Google Maps Global Mercator",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.01745329251994328,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4326"]],PROJECTION["Mercator_2SP"],PARAMETER["standard_parallel_1",0],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",0],PARAMETER["false_easting",0],PARAMETER["false_northing",0],UNIT["Meter",1],AUTHORITY["EPSG","900913"]]'
+                        });
+                        break;
+                }
+                $.ajax({
+                    type: "POST",
+                    url: host + $('#span' + i).html(),
+                    data: data,
+                    dataType: "text",
+                    contentType: 'application/json',
+                    success: function (data) {
+                        $('#res' + i).html("res:"+data.toString());
+                    }
+                });
+            });
+//                $('#btn' + i).click(function () {
+//                    var data = null;
+//
+//
+//                });
+        });
+    </script>
+</head>
+<body>
+<style>
+    td {
+        border: solid #add9c0;
+        border-width: 0px 1px 1px 0px;
+        padding: 10px 7px;
+    }
+
+    table {
+        border: solid #add9c0;
+        border-width: 1px 0px 0px 1px;
+        table-layout:fixed ;
+        width: 1800px;
+    }
+</style>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <td>函数名称</td>
+            <td>函数地址</td>
+            <td>参数列表</td>
+            <td>运行测试</td>
+            <td>运行结果</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><h4>空间相交运算</h4></td>
+            <td><span id="span1">/rest/gis/wps/intersects</span></td>
+            <td><span>{"sourceWKT":"POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))",
+                "targetWKT":"POINT(5 5)"
+                }</span></td>
+            <td>
+                <input type="button" id="btn1" value="运行">
+            </td>
+            <td><span id="res1"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间包含运算</h4></td>
+            <td><span id="span2">/rest/gis/wps/contains</span></td>
+            <td><span>{"sourceWKT":"POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))",
+                "targetWKT":"POINT(5 5)"
+                }</span></td>
+            <td>
+                <input type="button" id="btn2" value="运行">
+            </td>
+            <td><span id="res2"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间相接运算</h4></td>
+            <td><span id="span3">/rest/gis/wps/touches</span></td>
+            <td><span>{"sourceWKT":"POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))",
+                "targetWKT":"POINT(5 5)"
+                }</span></td>
+            <td>
+                <input type="button" id="btn3" value="运行">
+            </td>
+            <td><span id="res3"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间被包含运算</h4></td>
+            <td><span id="span4">/rest/gis/wps/within</span></td>
+            <td><span>{"sourceWKT":"POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))",
+                "targetWKT":"POINT(5 5)"
+                }</span></td>
+            <td>
+                <input type="button" id="btn4" value="运行">
+            </td>
+            <td><span id="res4"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间相离运算</h4></td>
+            <td><span id="span5">/rest/gis/wps/disjoint</span></td>
+            <td><span>{"sourceWKT":"POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))",
+                "targetWKT":"POINT(5 5)"
+                }</span></td>
+            <td>
+                <input type="button" id="btn5" value="运行">
+            </td>
+            <td><span id="res5"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间相等运算</h4></td>
+            <td><span id="span6">/rest/gis/wps/equals</span></td>
+            <td><span>{"sourceWKT":"POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))",
+                "targetWKT":"POINT(5 5)"
+                }</span></td>
+            <td>
+                <input type="button" id="btn6" value="运行">
+            </td>
+            <td><span id="res6"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间部分重合运算</h4></td>
+            <td><span id="span7">/rest/gis/wps/overlaps</span></td>
+            <td><span>{"sourceWKT":"POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))",
+                "targetWKT":"POINT(5 5)"
+                }</span></td>
+            <td>
+                <input type="button" id="btn7" value="运行">
+            </td>
+            <td><span id="res7"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间穿跨越运算</h4></td>
+            <td><span id="span8">/rest/gis/wps/crosses</span></td>
+            <td><span>{"sourceWKT":"POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))",
+                "targetWKT":"POINT(5 5)"
+                }</span></td>
+            <td>
+                <input type="button" id="btn8" value="运行">
+            </td>
+            <td><span id="res8"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间并运算</h4></td>
+            <td><span id="span9">/rest/gis/wps/union</span></td>
+            <td><span>{"sourceWKT":"POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))",
+                "targetWKT":"POINT(5 5)"
+                }</span></td>
+            <td>
+                <input type="button" id="btn9" value="运行">
+            </td>
+            <td><span id="res9"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间交运算</h4></td>
+            <td><span id="span10">/rest/gis/wps/intersection</span></td>
+            <td><span>{"sourceWKT":"POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))",
+                "targetWKT":"POINT(5 5)"
+                }</span></td>
+            <td>
+                <input type="button" id="btn10" value="运行">
+            </td>
+            <td><span id="res10"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间差运算</h4></td>
+            <td><span id="span11">/rest/gis/wps/difference</span></td>
+            <td><span>{"sourceWKT":"POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))",
+                "targetWKT":"POINT(5 5)"
+                }</span></td>
+            <td>
+                <input type="button" id="btn11" value="运行">
+            </td>
+            <td><span id="res11"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间距离运算</h4></td>
+            <td><span id="span12">/rest/gis/wps/distance</span></td>
+            <td><span>{"sourceWKT":"POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))",
+                "targetWKT":"POINT(5 5)"
+                }</span></td>
+            <td>
+                <input type="button" id="btn12" value="运行">
+            </td>
+            <td><span id="res12"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间缓冲区运算</h4></td>
+            <td><span id="span13">/rest/gis/wps/buffer</span></td>
+            <td><span>{"sourceWKT":"POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))",
+                "radius":100.0
+                }</span></td>
+            <td>
+                <input type="button" id="btn13" value="运行">
+            </td>
+            <td><span id="res13"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间面积运算</h4></td>
+            <td><span id="span14">/rest/gis/wps/area</span></td>
+            <td><span>{"sourceWKT":"POLYGON((1 1,2 3,4 4,6 9,17 2,1 1))"
+                }</span></td>
+            <td>
+                <input type="button" id="btn14" value="运行">
+            </td>
+            <td><span id="res14"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间长度运算</h4></td>
+            <td><span id="span15">/rest/gis/wps/length</span></td>
+            <td><span>{"sourceWKT": "LINESTRING(1 1,2 2,3 3,5 7,8 9,12 45)"
+                }</span></td>
+            <td>
+                <input type="button" id="btn15" value="运行">
+            </td>
+            <td><span id="res15"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间坐标运算1</h4></td>
+            <td><span id="span16">/rest/gis/wps/transform</span></td>
+            <td><span>{"sourceWKT": "LINESTRING(1 1,2 2,3 3,5 7,8 9,12 45)",
+                "sourceEpsg":4326,"targetEpsg":900913}</span></td>
+            <td>
+                <input type="button" id="btn16" value="运行">
+            </td>
+            <td><span id="res16"></span></td>
+        </tr>
+        <tr>
+            <td><h4>空间坐标运算2</h4></td>
+            <td><span id="span17">/rest/gis/wps/transform4WKT</span></td>
+            <td style="word-wrap:break-word;"><span>{"sourceWKT": "LINESTRING(1 1,2 2,3 3,5 7,8 9,12 45)",
+                "sourceCRS":'GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4326"]]',
+                "targetCRS":'PROJCS["Google Maps Global Mercator",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.01745329251994328,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4326"]],PROJECTION["Mercator_2SP"],PARAMETER["standard_parallel_1",0],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",0],PARAMETER["false_easting",0],PARAMETER["false_northing",0],UNIT["Meter",1],AUTHORITY["EPSG","900913"]]'}</span></td>
+            <td>
+                <input type="button" id="btn17" value="运行">
+            </td>
+            <td><span id="res17"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
