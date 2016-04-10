@@ -1,45 +1,50 @@
 package com.domeastudio.dto.resultset;
 
-import com.domeastudio.util.JacksonHelper;
+import org.codehaus.jackson.map.annotate.JsonRootName;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
 /**
  * Created by domea on 16-1-23.
  * {
- *     code:{
+ *     logCode:{
  *         message:{
  *             dateTime:"",
  *             logLevel:"",
  *             text:""
  *         },
- *         number:"",
+ *         systemCode:{
+ *             message:"",
+ *             code:""
+ *         },
  *     },
  *     resultObject:{
  *
  *     }
  * }
  */
-public abstract class OutputParameters implements Serializable {
-    private SystemCode code;
-    private JacksonHelper jacksonHelper;
-    public SystemCode getCode() {
-        return code;
+@JsonRootName("outputParameters")
+@Component("outputParameters")
+public class OutputParameters implements Serializable {
+    @Autowired
+    private LogCode logCode;
+    private String bean;
+
+    public LogCode getLogCode() {
+        return logCode;
     }
 
-    public void setCode(SystemCode code) {
-        this.code = code;
+    public void setLogCode(LogCode logCode) {
+        this.logCode = logCode;
     }
 
-    public String getOutputParameters(Object object){
-        return jacksonHelper.toJson(object);
+    public String getBean() {
+        return bean;
     }
 
-    public JacksonHelper getJacksonHelper() {
-        return jacksonHelper;
-    }
-
-    public void setJacksonHelper(JacksonHelper jacksonHelper) {
-        this.jacksonHelper = jacksonHelper;
+    public void setBean(String bean) {
+        this.bean = bean;
     }
 }
