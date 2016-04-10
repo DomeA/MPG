@@ -1,13 +1,17 @@
 package com.domeastudio.dto.resultset;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.map.annotate.JsonRootName;
+
 import java.io.Serializable;
 
 /**
  * Created by domea on 16-1-23.
  */
+@JsonRootName("SystemCode")
 public class SystemCode implements Serializable {
     private MessageTemplate message;
-    private String number;
+    private Code code;
 
     public MessageTemplate getMessage() {
         return message;
@@ -17,11 +21,11 @@ public class SystemCode implements Serializable {
         this.message = message;
     }
 
-    public String getNumber() {
-        return number;
+    public Code getCode(){
+        return code;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setCode(Code code) {
+        this.code = code;
     }
 }
