@@ -87,14 +87,14 @@
         <aop:pointcut id="txPointcut" expression="execution(* cn.javass..service..*.*(..))" />
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
     </aop:config>
-    <!-- <tx:advice id="txAdvice" transaction-manager="txManager">
-         <tx:attributes>
-              <tx:method name="list*" read-only="true" />加事务的方法
-              <tx:method name="save*" propagation="REQUIRED"/> 事务的生成特性
-              <tx:method name="delete*" propagation="REQUIRED"/>事务的生成特性
-              <tx:method name="update*" propagation="REQUIRED"/>事务的生成特性
-         </tx:attributes>
-    </tx:advice> -->
+    <!--<tx:advice id="txAdvice" transaction-manager="txManager">-->
+         <!--<tx:attributes>-->
+              <!--<tx:method name="list*" read-only="true" />加事务的方法-->
+              <!--<tx:method name="save*" propagation="REQUIRED"/> 事务的生成特性-->
+              <!--<tx:method name="delete*" propagation="REQUIRED"/>事务的生成特性-->
+              <!--<tx:method name="update*" propagation="REQUIRED"/>事务的生成特性-->
+         <!--</tx:attributes>-->
+    <!--</tx:advice>-->
     <!-- 事物执行范围
     <aop:config>
      <aop:pointcut id="bussinessService" expression="execution(public * com.sshFrame.test.service..*.*(..))" />
