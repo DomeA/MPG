@@ -47,7 +47,7 @@ public class Wps {
     public String touches(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("touches process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             Geometry geometryTarget=GeometryFormateHelper.getGeometry(spatialOperationParams.getTargetWKT());
             logger.info("result:"+SpatialOperationHelper.touches(geometrySource,geometryTarget).toString());
@@ -65,7 +65,7 @@ public class Wps {
     public String contains(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("contains process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             Geometry geometryTarget=GeometryFormateHelper.getGeometry(spatialOperationParams.getTargetWKT());
             logger.info("result:"+SpatialOperationHelper.contains(geometrySource,geometryTarget).toString());
@@ -83,7 +83,7 @@ public class Wps {
     public String crosses(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("crosses process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             Geometry geometryTarget=GeometryFormateHelper.getGeometry(spatialOperationParams.getTargetWKT());
             logger.info("result:"+SpatialOperationHelper.crosses(geometrySource,geometryTarget).toString());
@@ -101,7 +101,7 @@ public class Wps {
     public String equals(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("equals process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             Geometry geometryTarget=GeometryFormateHelper.getGeometry(spatialOperationParams.getTargetWKT());
             logger.info("result:"+SpatialOperationHelper.equals(geometrySource,geometryTarget).toString());
@@ -119,7 +119,7 @@ public class Wps {
     public String difference(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("difference process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             Geometry geometryTarget=GeometryFormateHelper.getGeometry(spatialOperationParams.getTargetWKT());
             logger.info("result:"+SpatialOperationHelper.difference(geometrySource,geometryTarget).toText());
@@ -137,7 +137,7 @@ public class Wps {
     public String intersection(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("intersection process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             Geometry geometryTarget=GeometryFormateHelper.getGeometry(spatialOperationParams.getTargetWKT());
             logger.info("result:"+SpatialOperationHelper.intersection(geometrySource,geometryTarget).toText());
@@ -155,7 +155,7 @@ public class Wps {
     public String union(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("union process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             Geometry geometryTarget=GeometryFormateHelper.getGeometry(spatialOperationParams.getTargetWKT());
             logger.info("result:"+SpatialOperationHelper.union(geometrySource,geometryTarget).toText());
@@ -173,7 +173,7 @@ public class Wps {
     public String disjoint(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("disjoint process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             Geometry geometryTarget=GeometryFormateHelper.getGeometry(spatialOperationParams.getTargetWKT());
             logger.info("result:"+SpatialOperationHelper.disjoint(geometrySource,geometryTarget).toString());
@@ -191,7 +191,7 @@ public class Wps {
     public String overlaps(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("overlaps process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             Geometry geometryTarget=GeometryFormateHelper.getGeometry(spatialOperationParams.getTargetWKT());
             logger.info("result:"+SpatialOperationHelper.overlaps(geometrySource,geometryTarget).toString());
@@ -209,7 +209,7 @@ public class Wps {
     public String within(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("within process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             Geometry geometryTarget=GeometryFormateHelper.getGeometry(spatialOperationParams.getTargetWKT());
             logger.info("result:"+SpatialOperationHelper.within(geometrySource,geometryTarget).toString());
@@ -227,7 +227,7 @@ public class Wps {
     public String distance(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("distance process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             Geometry geometryTarget=GeometryFormateHelper.getGeometry(spatialOperationParams.getTargetWKT());
             logger.info("result:"+SpatialOperationHelper.distance(geometrySource,geometryTarget));
@@ -245,7 +245,7 @@ public class Wps {
     public String area(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("area process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             logger.info("result:"+SpatialOperationHelper.area(geometrySource));
             return String.valueOf(SpatialOperationHelper.area(geometrySource)) ;
@@ -262,7 +262,7 @@ public class Wps {
     public String length(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("length process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             logger.info("result:"+SpatialOperationHelper.length(geometrySource));
             return String.valueOf(SpatialOperationHelper.length(geometrySource)) ;
@@ -279,7 +279,7 @@ public class Wps {
     public String buffer(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("buffer process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             Double radius=spatialOperationParams.getRadius();
             logger.info("result:"+SpatialOperationHelper.buffer(geometrySource,radius).toText());
@@ -297,7 +297,7 @@ public class Wps {
     public String transform(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("transform process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             Integer sourceEpsg=spatialOperationParams.getSourceEpsg();
             Integer targetEpsg=spatialOperationParams.getTargetEpsg();
@@ -321,7 +321,7 @@ public class Wps {
     public String transform4WKT(SpatialOperationParams spatialOperationParams){
         try{
             logger.info("transform process is start:");
-            logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
+            logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());
             String sourceCRS=spatialOperationParams.getSourceCRS();
             String targetCRS=spatialOperationParams.getTargetCRS();
