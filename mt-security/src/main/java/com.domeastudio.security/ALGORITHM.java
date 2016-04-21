@@ -26,5 +26,6 @@ public enum ALGORITHM {
     PBEWithSHA1AndRC2_40,
     MD5withRSA,
     RSA,
-    DH
+    DH,
+    DSA
 }

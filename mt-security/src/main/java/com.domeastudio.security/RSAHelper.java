@@ -66,7 +66,7 @@ public class RSAHelper {
      * @throws Exception
      *
      */
-    public static boolean verify(byte[] data, String publicKey, String sign,ALGORITHM keyAlgorithm,ALGORITHM signatureAlgorithm)
+    public static Boolean verify(byte[] data, String publicKey, String sign,ALGORITHM keyAlgorithm,ALGORITHM signatureAlgorithm)
             throws Exception {
 
         // 解密由base64编码的公钥
