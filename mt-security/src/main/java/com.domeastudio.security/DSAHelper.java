@@ -1,5 +1,7 @@
 package com.domeastudio.security;
 
+import org.apache.log4j.Logger;
+
 import java.security.*;
 import java.security.interfaces.DSAPrivateKey;
 import java.security.interfaces.DSAPublicKey;
@@ -12,6 +14,7 @@ import java.util.Map;
  * Created by domea on 16-4-21.
  */
 public class DSAHelper {
+    private static Logger logger = Logger.getLogger(DSAHelper.class);
     /**
      * 默认密钥字节数
      *

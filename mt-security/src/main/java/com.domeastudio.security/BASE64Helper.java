@@ -1,6 +1,7 @@
 package com.domeastudio.security;
 
 import com.domeastudio.security.util.Byte2StringHelper;
+import org.apache.log4j.Logger;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
@@ -8,6 +9,7 @@ import sun.misc.BASE64Encoder;
  * Created by domea on 16-4-14.
  */
 public class BASE64Helper {
+    private static Logger logger = Logger.getLogger(BASE64Helper.class);
     /**
      * BASE64解密
      *
