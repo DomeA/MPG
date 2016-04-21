@@ -34,7 +34,6 @@ public class DHHelper {
     /**
      * DH加密下需要一种对称加密算法对数据加密，这里我们使用DES，也可以使用其他对称加密算法。
      */
-    //public static final String SECRET_ALGORITHM = "DES";
     private static final String PUBLIC_KEY = "DHPublicKey";
     private static final String PRIVATE_KEY = "DHPrivateKey";
 
@@ -208,5 +207,53 @@ public class DHHelper {
         Key key = (Key) keyMap.get(PUBLIC_KEY);
 
         return BASE64Helper.encryptBASE64(key.getEncoded());
+    }
+
+    public static void main(String[] args) throws Exception {
+        // 生成甲方密钥对儿
+        Map<String, Object> aKeyMap = DHHelper.getKey(ALGORITHM.DH);
+        String aPublicKey = DHHelper.getPublicKey(aKeyMap);
+        String aPrivateKey = DHHelper.getPrivateKey(aKeyMap);
+
+        System.err.println("甲方公钥:\r" + aPublicKey);
+        System.err.println("甲方私钥:\r" + aPrivateKey);
+
+        // 由甲方公钥产生本地密钥对儿
+        Map<String, Object> bKeyMap = DHHelper.getKey(aPublicKey,ALGORITHM.DH);
+        String bPublicKey = DHHelper.getPublicKey(bKeyMap);
+        String bPrivateKey = DHHelper.getPrivateKey(bKeyMap);
+
+        System.err.println("乙方公钥:\r" + bPublicKey);
+        System.err.println("乙方私钥:\r" + bPrivateKey);
+
+        String aInput = "abc ";
+        System.err.println("原文: " + aInput);
+
+        // 由甲方公钥，乙方私钥构建密文
+        byte[] aCode = DHHelper.encrypt(aInput.getBytes(), aPublicKey,
+                bPrivateKey,ALGORITHM.DH,ALGORITHM.DES);
+
+        // 由乙方公钥，甲方私钥解密
+        byte[] aDecode = DHHelper.decrypt(aCode, bPublicKey, aPrivateKey,ALGORITHM.DH,ALGORITHM.DES);
+        String aOutput = (new String(aDecode));
+
+        System.err.println("解密: " + aOutput);
+
+
+
+        System.err.println(" ===============反过来加密解密================== ");
+        String bInput = "def ";
+        System.err.println("原文: " + bInput);
+
+        // 由乙方公钥，甲方私钥构建密文
+        byte[] bCode = DHHelper.encrypt(bInput.getBytes(), bPublicKey,
+                aPrivateKey,ALGORITHM.DH,ALGORITHM.DES);
+
+        // 由甲方公钥，乙方私钥解密
+        byte[] bDecode = DHHelper.decrypt(bCode, aPublicKey, bPrivateKey,ALGORITHM.DH,ALGORITHM.DES);
+        String bOutput = (new String(bDecode));
+
+        System.err.println("解密: " + bOutput);
+
     }
 }
