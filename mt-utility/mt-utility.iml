@@ -103,6 +103,7 @@
     <orderEntry type="library" name="Maven: org.apache.xmlgraphics:batik-svggen:1.7" level="project" />
     <orderEntry type="library" name="Maven: org.geotools:gt-property:14.3" level="project" />
     <orderEntry type="library" name="Maven: org.hsqldb:hsqldb:2.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.geotools:gt-epsg-wkt:14.3" level="project" />
     <orderEntry type="library" name="Maven: org.geotools:gt-epsg-extension:14.3" level="project" />
     <orderEntry type="library" name="Maven: org.jaitools:jt-zonalstats:1.4.0" level="project" />
     <orderEntry type="library" name="Maven: it.geosolutions.jaiext.affine:jt-affine:1.0.8" level="project" />

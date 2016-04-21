@@ -28,6 +28,9 @@ public class Wps {
     @Consumes(MediaType.APPLICATION_JSON)
     public String intersects(SpatialOperationParams spatialOperationParams){
         try{
+            if(true){
+
+            }else{}
             logger.info("intersects process is start:");
             logger.info("params:"+ JacksonHelper.buildNormalBinder().toJson(spatialOperationParams));
             Geometry geometrySource=GeometryFormateHelper.getGeometry(spatialOperationParams.getSourceWKT());

@@ -12,6 +12,8 @@
         <module>mt-server</module>
         <module>mt-utility</module>
         <module>mt-portal</module>
+        <module>mt-monitor</module>
+        <module>mt-security</module>
     </modules>
     <developers>
         <developer>

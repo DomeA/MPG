@@ -1,6 +1,7 @@
 package com.domeastudio.util.gis;
 
 import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.io.ParseException;
 import org.apache.log4j.Logger;
 import org.geotools.geometry.jts.JTS;
 import org.geotools.referencing.CRS;
@@ -79,7 +80,7 @@ public final class CoordinateTransformationHelper {
         return getEPSG(crs);
     }
 
-    public static void main(String[] args) throws FactoryException {
+    public static void main(String[] args) throws FactoryException, ParseException, TransformException {
         String wkt="PROJCS[\"WGS 84 / UTM zone 50N\", \n" +
                 "GEOGCS[\"WGS 84\", DATUM[\"WGS_1984\", SPHEROID[\"WGS 84\", 6378137, 298.257223563, AUTHORITY[\"EPSG\", \"7030\"]], AUTHORITY[\"EPSG\", \"6326\"]], PRIMEM[\"Greenwich\", 0, AUTHORITY[\"EPSG\", \"8901\"]], UNIT[\"degree\", 0.0174532925199433, AUTHORITY[\"EPSG\", \"9122\"]], AUTHORITY[\"EPSG\", \"4326\"]], \n" +
                 "PROJECTION[\"Transverse_Mercator\"], \n" +
@@ -90,6 +91,11 @@ public final class CoordinateTransformationHelper {
                 "PARAMETER[\"false_northing\", 0], \n" +
                 "UNIT[\"metre\", 1, AUTHORITY[\"EPSG\", \"9001\"]], \n" +
                 "AUTHORITY[\"EPSG\", \"32650\"]]";
-        System.out.print(CoordinateTransformationHelper.getEPSG(wkt));
+        System.out.println(CoordinateTransformationHelper.getEPSG(wkt));
+
+        String wkto="Point(118 32)";
+        Geometry g=GeometryFormateHelper.getGeometry(wkto);
+        Geometry p=CoordinateTransformationHelper.transform(g, 4326, 3826);
+        System.out.println(p.toText());
     }
 }

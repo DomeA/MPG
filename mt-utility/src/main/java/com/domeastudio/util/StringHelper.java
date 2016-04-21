@@ -14,4 +14,11 @@ public class StringHelper {
     public static Boolean isAllUpperCase(String string){
         return StringUtils.isAllUpperCase(string);
     }
+
+    public static void main(String [] args){
+        //IpHostHelper ipHostHelper=IpHostHelper.getInstance();
+        System.out.println("null:" + StringHelper.isEmptyAndBlank(null));
+        System.out.println("空字符" + StringHelper.isEmptyAndBlank(""));
+        System.out.println("空格字符" + StringHelper.isEmptyAndBlank(" "));
+    }
 }
