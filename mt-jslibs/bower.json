@@ -1,0 +1,25 @@
+{
+  "name": "mt-jslibs",
+  "description": "javascript data structure",
+  "main": "index.js",
+  "authors": [
+    "DomeA"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "gis",
+    "data",
+    "structure"
+  ],
+  "homepage": "https://github.com/DomeA/MPG",
+  "moduleType": [
+    "amd"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
