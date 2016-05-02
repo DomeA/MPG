@@ -7,7 +7,7 @@ define({
     //urlArgs: "bust=" + (new Date()).getTime(),
     baseUrl:'js/',
     paths: {
-        "jquery": 'libs/jquery/jquery',
+        "jquery": '',
         "jquery.md5":'libs/jquery-md5/jquery.md5',
         "bootstrap":'libs/bootstrap/bootstrap',
         "jquery.validate":'libs/jquery-validation/jquery.validate',
