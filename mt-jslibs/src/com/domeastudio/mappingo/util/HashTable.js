@@ -1,7 +1,7 @@
 /**
  * Created by domea on 16-5-1.
  */
-define(function () {
+define("com/domeastudio/mappingo/util/HashTable",[],function () {
     var createNew=function () {
         var hashTable={};
         hashTable.put=function(){};
