@@ -1,4 +1,8 @@
 package com.domeastudio.rest.block.files;
+import com.domeastudio.data.pojo.files.FileAttributeEntity;
+import com.domeastudio.data.pojo.files.FileEntity;
+import com.domeastudio.data.pojo.files.FileType;
+import com.domeastudio.data.service.MServices.FileService;
 import com.domeastudio.dto.FileOperationParams;
 import com.domeastudio.dto.resultset.ReadWriteFileOutputParams;
 import com.domeastudio.dto.resultset.LogLevel;
@@ -23,7 +27,10 @@ public class Files {
     @Autowired
     private ReadWriteFileOutputParams readWriteFileOutputParams;
 
-    @GET
+    @Autowired
+    private FileService fileService;
+
+    @POST
     @Path("/searchFile")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -32,9 +39,7 @@ public class Files {
             logger.info("file search process is start.");
             logger.info("params:"+ JacksonHelper.buildNonNullBinder().toJson(fileOperationParams));
             String fileName=fileOperationParams.getFileName();
-            Date date = fileOperationParams.getDate();
-            Date publicationDate =fileOperationParams.getPublicationDate();
-            return readWriteFileOutputParams.outputResult(null, LogLevel.INFO,"","mpg_00000");
+            return readWriteFileOutputParams.outputResult(fileService.get(fileName,FileEntity.class.getName()), LogLevel.INFO,"","mpg_00000");
         } catch (Exception e) {
             logger.error("file search process is failed",e);
             throw new RuntimeException("file search process is failed");
@@ -46,6 +51,15 @@ public class Files {
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     public String fileAdd(){
+        FileEntity fileEntity=new FileEntity();
+        fileEntity.setFileName("abc");
+        fileEntity.setContent("123456adbfasldfjasl");
+        FileAttributeEntity fileAttributeEntity=new FileAttributeEntity();
+        fileAttributeEntity.setCreateTime(new Date());
+        fileAttributeEntity.setStorageTime(new Date());
+        fileAttributeEntity.setFileType(FileType.word);
+        fileEntity.setFileAttribute(fileAttributeEntity);
+        fileService.insert(fileEntity,FileEntity.class.getName());
         return null;
     }
 
