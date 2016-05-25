@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-
+import org.apache.log4j.Logger;
 /**
  * Created by domea on 16-5-25.
  */
@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 @Component
 @Singleton
 public class Equipment {
+    private static Logger logger = Logger.getLogger(Equipment.class);
     /**
      * 根据用户信息，查询此用户当前位置信息
      * @param userOperationParams
