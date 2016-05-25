@@ -2,13 +2,14 @@ package com.domeastudio.dto;
 
 import org.codehaus.jackson.map.annotate.JsonRootName;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by domea on 16-5-25.
  */
 @JsonRootName("userOperationParams")
-public class UserOperationParams {
+public class UserOperationParams implements Serializable {
     private String email;
     private String phone;
     private String loginName;
