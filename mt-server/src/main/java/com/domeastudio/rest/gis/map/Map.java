@@ -24,19 +24,35 @@ public class Map {
         return null;
     }
 
+    @GET
+    @Path("/map/{mapName}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String getMap(@PathParam("mapName") String mapName){
+        return null;
+    }
+
     @POST
     @Path("/map")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String getMap(MapOperationParams mapOperationParams){
+    public String addMap(MapOperationParams mapOperationParams){
         return null;
     }
 
     @DELETE
-    @Path("/delmap")
+    @Path("/delmap/{mapID}")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String delMap(MapOperationParams mapOperationParams){
+    public String delMap(@PathParam("mapID") String mapID){
+        return null;
+    }
+
+    @PUT
+    @Path("/updatemap")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String updateMap(MapOperationParams mapOperationParams){
         return null;
     }
 
