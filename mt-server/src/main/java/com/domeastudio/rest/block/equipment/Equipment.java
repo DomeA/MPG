@@ -21,8 +21,8 @@ public class Equipment {
      * @param userOperationParams
      * @return
      */
-    @POST
-    @Path("/location")
+    @GET
+    @Path("/location/{equipmentID}")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     public String location(UserOperationParams userOperationParams){
@@ -34,7 +34,7 @@ public class Equipment {
      * @param userOperationParams
      * @return
      */
-    @POST
+    @GET
     @Path("/history")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)

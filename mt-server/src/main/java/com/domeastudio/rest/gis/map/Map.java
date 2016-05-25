@@ -33,7 +33,7 @@ public class Map {
     }
 
     @POST
-    @Path("/map")
+    @Path("/addMap")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     public String addMap(MapOperationParams mapOperationParams){
@@ -41,7 +41,7 @@ public class Map {
     }
 
     @DELETE
-    @Path("/delmap/{mapID}")
+    @Path("/delMap/{mapID}")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     public String delMap(@PathParam("mapID") String mapID){
@@ -49,7 +49,7 @@ public class Map {
     }
 
     @PUT
-    @Path("/updatemap")
+    @Path("/updateMap")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     public String updateMap(MapOperationParams mapOperationParams){
