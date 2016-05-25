@@ -1,5 +1,4 @@
-#Update 'Server' value
-#Sat Apr 16 20:34:36 CST 2016
-License_number=
+Server=127.0.0.1
+#Server +'###'+ Date+'###'+90days
 Customer_key=
-Server=DomeAStudio
+License_number=

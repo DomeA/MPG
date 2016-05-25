@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var host = "http://localhost:8080/server";
+            var data = JSON.stringify({
+                fileName:'abc'
+            });
+            $.ajax({
+                type: "POST",
+                url: host + '/rest/block/files/searchFile',
+                data: data,
+                dataType: "text",
+                contentType: 'application/json',
+                success: function (data) {
+                    alert(data);
+                }
+            });
+            $("#btn").click(function(){
+                $.ajax({
+                    type: "POST",
+                    url: host + '/rest/block/files/addFile',
+                    data: null,
+                    dataType: "text",
+                    contentType: 'application/json',
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="button" id="btn" />
+</body>
+</html>
