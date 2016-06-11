@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="js/vendor/dhtmlxSuite_v50_pro_eval/codebase/dhtmlx.css">
+    <script src="js/vendor/dhtmlxSuite_v50_pro_eval/codebase/dhtmlx.js"></script>
+    <script src="js/libs/jquery/dist/jquery.js"></script>
+    <style>
+        html,body{
+            margin: 0px;
+            padding: 0px;
+            height:100%;
+            width:100%;
+            overflow: hidden;
+            background-color: #fcfff5;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            var path="dhmtlxTest/";
+
+            $(function(){
+                var sidebar_1 = new dhtmlXSideBar({
+                    parent: document.body,
+                    width:100,
+                    template: 'icons'
+                });
+                //var sidebar_1 = a.attachSidebar({template: 'icons', width: '200', icons_path: './codebase/imgs_sidebar/', autohide: '', header: ''});
+                sidebar_1.addItem({id: 'sidebar_item_1', text: 'sidebar_item_1', icon: 'sidebar_item_icon.png'});
+                var sidebar_item_1 = sidebar_1.cells('sidebar_item_1');
+                sidebar_item_1.setActive();
+
+
+                sidebar_1.addItem({id: 'sidebar_item_2', text: 'sidebar_item_2', icon: 'sidebar_item_icon.png'});
+                var sidebar_item_2 = sidebar_1.cells('sidebar_item_2');
+
+
+                sidebar_1.addItem({id: 'sidebar_item_3', text: 'sidebar_item_3', icon: 'sidebar_item_icon.png'});
+                var sidebar_item_3 = sidebar_1.cells('sidebar_item_3');
+
+
+                sidebar_1.addItem({id: 'sidebar_item_4', text: 'sidebar_item_4', icon: 'sidebar_item_icon.png'});
+                var sidebar_item_4 = sidebar_1.cells('sidebar_item_4');
+
+
+                sidebar_item_1= sidebar_1.cells('sidebar_item_1');
+                $(function(){
+                    toolbar=sidebar_1.attachToolbar();
+                });
+                $(function(){
+                    layout_1 = sidebar_item_1.attachLayout('2U');
+                });
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
