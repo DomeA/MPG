@@ -1,36 +1,17 @@
 /**
  * Created by domea on 16-6-11.
  */
-define([
-    'jquery',
-    'require',
-    './config',
-    'jquery.client',
-    'jquery.log',
-    'jquery.particleground',
-    'dhtmlx',
-    './app/desktop/main',
-    './app/mobile/main'
-],function ($,require,config) {
+define(['jquery','./config','../utils/utils','dhtmlx','jquery.particleground'],function ($,config,utils) {
     var _testModule=function(){
-        __debug('loader module is loaded success!');
-    };
-    var __debug=function(message){
-        var debug=config.debug;
-        debug?$.log(message):$('Debug switch has been turned off!');
+        utils.test();
+        utils.logger('login module is loaded success!');
     };
     var _show=function(){
         __titleInit();
         __loginInit();
-        var mod='';
-        __isDesktop()?mod='desktop':mod='mobile';
-        var mod=require('./app/'+mod+'/main');
-        mod.test();
-        __debug("show function is running ok!");
+        utils.logger("show function is running ok!");
     };
-    var __isDesktop=function(){
-        return true;
-    };
+
     var __backgroundInit=function(domId,
                                   dotColor,
                              lineColor,
@@ -51,7 +32,7 @@ define([
                 directionX:directionX,//可以“center”,“left”或'right”。“中心”意味着点将反弹的边缘画布。
                 directionY:directionY //可以 'center', 'up' or 'down'. 'center' 意味着点将反弹的边缘画布。
             });
-        __debug('backgroundInit function is running ok!');
+        utils.logger('backgroundInit function is running ok!');
     };
     var __carouselInit=function(){
             window.dhx4.skin = 'material';
@@ -65,7 +46,7 @@ define([
             var carousel_item_2 = carousel_1.cells('carousel_item_2');
             carousel_1.addCell('carousel_item_3');
             var carousel_item_3 = carousel_1.cells('carousel_item_3');
-        __debug('carouselInit function is running ok!');
+        utils.logger('carouselInit function is running ok!');
     };
     var __loginFormInit=function () {
 
@@ -75,17 +56,17 @@ define([
         __backgroundInit(background.domId,background.dotColor, background.lineColor, background.minSpeedX, background.maxSpeedX, background.minSpeedY, background.maxSpeedY, background.directionX, background.directionY);
         __carouselInit();
         __loginFormInit();
-        __debug('loginInit function is running ok!');
+        utils.logger('loginInit function is running ok!');
     };
     var __headerInit=function(){
         var title=config.title;
         //todo
-        __debug('titleInit function is running ok!');
+        utils.logger('titleInit function is running ok!');
     };
     var __titleInit=function(){
         var title=config.title;
         $('title').html(title.mainTitle.value);
-        __debug('titleInit function is running ok!');
+        utils.logger('titleInit function is running ok!');
     };
     return {
         test:_testModule,

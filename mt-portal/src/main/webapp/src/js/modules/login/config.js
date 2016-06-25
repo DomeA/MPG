@@ -2,7 +2,6 @@
  * Created by domea on 16-6-11.
  */
 define({
-    debug:true,
     background:{
         domId:'body',
         dotColor:'#5cbdaa',
@@ -25,6 +24,4 @@ define({
             value:'管理系统'
         }
     }
-
-
 });
