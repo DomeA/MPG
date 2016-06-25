@@ -13,6 +13,7 @@ define({
         // "jquery.md5":'jquery-md5/jquery.md5',
         "bootstrap":'bootstrap/dist/js/bootstrap',
         'jquery.client':'../vendor/jquery.client',
+        'jquery.dateFormat':'jquery-dateFormat/dist/jquery-dateFormat',
         'jquery.particleground':'../vendor/jquery.particleground',
         'underscore':'underscore/underscore',
         'dhtmlx':'../vendor/dhtmlxSuite_v50_pro_eval/codebase/dhtmlx',
@@ -53,6 +54,9 @@ define({
                 'css!../libs/bootstrap/dist/css/bootstrap.css',
                 'css!../libs/bootstrap/dist/css/bootstrap-theme.css'
             ]
+        },
+        'jquery.dateFormat':{
+            deps:['jquery']
         },
         'jquery.client':{
             deps:['jquery']

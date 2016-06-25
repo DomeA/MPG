@@ -5,9 +5,9 @@
 (function(root){
     require(["config"], function(config){
         requirejs.config(config);
-        require(['../modules/loader','domReady!','bootstrap'], function(loader){
-            loader.test();
-            loader.show();
+        require(['../modules/login/main','domReady!','bootstrap'], function(login){
+            login.test();
+            login.show();
             // var myLayout= new dhtmlXLayoutObject({
             //         parent: document.body,
             //         pattern: "3L"
