@@ -1,0 +1,33 @@
+{
+  "name": "mappingo",
+  "description": "gis requirejs",
+  "main": "index.js",
+  "authors": [
+    "DomeA"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "gis",
+    "require"
+  ],
+  "homepage": "https://github.com/DomeA/MPG",
+  "moduleType": [
+    "amd"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "~2.2.4",
+    "bootstrap": "^3.3.6",
+    "requirejs": "^2.2.0",
+    "underscore": "^1.8.3",
+    "domReady": "^2.0.1",
+    "require-css": "^0.1.8",
+    "jquery-dateFormat": "^1.0.2"
+  }
+}
